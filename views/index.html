@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>输入提示后查询</title>
+
+
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		@media (min-width: 240px){
+			html{
+				font-size:32px;
+			}
+}
+@media (min-width: 320px){
+html{font-size:42.66667px;
+}
+}
+@media (min-width: 360px){
+html{font-size:48px;
+}
+}
+@media (min-width: 375px){
+html{font-size:50px;
+}
+}
+@media (min-width: 384px){
+html{font-size:51.2px;
+}
+}
+@media (min-width: 411px){
+html{font-size:54.8px;
+}
+}
+@media (min-width: 414px){
+html{font-size:55.2px;
+}
+}
+@media (min-width: 424px){
+html{font-size:56.53333px;
+}
+}
+@media (min-width: 480px){
+html{font-size:64px;
+}
+}
+@media (min-width: 540px){
+html{font-size:72px;
+}
+}
+@media (min-width: 640px){
+html{font-size:85.33333px;
+}
+}
+@media (min-width: 720px){
+html{font-size:96px;
+}
+}
+@media (min-width: 750px){
+html{font-size:100px;
+}
+}
+@media (min-width: 768px){
+html{font-size:102.4px;
+}
+}
+@media (min-width: 800px){
+html{font-size:106.66667px;
+}
+}
+@media (min-width: 980px){
+html{font-size:130.66667px;
+}
+}
+@media (min-width: 1024px){
+html{font-size:136.53333px;
+}
+}
+@media (min-width: 1080px){
+html{font-size:144px;
+}
+}
+@media (min-width: 1152px){
+html{font-size:153.6px;
+}
+}
+@media (min-width: 1366px){
+html{font-size:182.13333px;
+}
+}
+@media (min-width: 1440px){
+html{font-size:192px;
+}
+}
+@media (min-width: 2160px){
+html{font-size:288px;
+}
+}
+#view_parent{
+  font-size: 0;
+}
+
+	</style>
+
+</head>
+<body>
+
+<!-- <h3>test</h3>
+
+    <div class="test"> TEST  font-size </div>
+    <div class="test2"> TEST  font-size </div>
+	<div class="test_style">
+	    <div class="test3">
+
+		</div>
+		<div class="test4">
+
+		</div>
+	</div> -->
+
+
+<!-- <div id="container"></div>
+<div id="myPageTop">
+    <table>
+        <tr>
+            <td>
+                <label>请输入关键字：</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="tipinput"/>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=d52d8f2c363660ccd8ff28e1ebb80dd4"></script>
+  -->
+  <div id="view_parent"> </div>
+
+<script type="text/javascript">
+  let unit = '',
+      uiWidth = 750,
+      uiHeight = 1334;
+      unit = document.body.clientWidth / uiWidth;
+      // unit = document.body.clientHeight / uiHeight;
+
+	drawBackground()
+
+
+function drawBackground(){
+      let parrentCanvasId = document.getElementById("view_parent")
+
+      let screenWidth = window.screen.width;
+      let screenHeight = window.screen.height;
+  	  //let screenWidth = document.body.clientWidth;
+     // let screenHeight = document.body.clientHeight;
+  	  let scale = window.devicePixelRatio;
+  	  let realWidth = screenWidth;
+      let realHeight = screenHeight;
+
+      parrentCanvasId.innerHTML = '<canvas id="first_view" width="'+ realWidth +'" height="'+ realHeight +'"></canvas>'
+
+      // console.log(window.devicePixelRatio)
+      // console.log( navigator.userAgent )
+      // console.log( document.documentElement.getBoundingClientRect().width )
+
+      // console.log( document.documentElement.getBoundingClientRect().height )
+
+
+      let cId = document.getElementById("first_view");
+
+      let ctx = cId.getContext("2d");
+
+
+
+	    // ctx.scale(scale, scale);
+
+      //全屏
+      ctx.fillStyle = "#458bfb";
+      ctx.fillRect(0, 0, realWidth, realHeight);
+
+      // 三角形
+      ctx.beginPath();
+      ctx.lineJoin="round";
+      ctx.lineWidth = 3;
+      ctx.moveTo(115 * unit, 145 * unit);
+      ctx.lineTo(75 * unit, 195 * unit);
+      ctx.lineTo(155 * unit, 195 * unit);
+      ctx.closePath();
+      ctx.strokeStyle = "#c0c8e3";
+      ctx.stroke();
+
+      //右边圆形
+      ctx.beginPath();
+
+      ctx.arc(660 * unit, 250 * unit, 360 * unit, 0, 2*Math.PI);
+      ctx.fillStyle = "#445ef9";
+      ctx.strokeStyle = "#445ef9";
+      ctx.fill();
+      ctx.stroke();
+
+      //右边小圆圈
+      ctx.beginPath();
+      ctx.arc(720 * unit, 125 * unit, 60 * unit, 0, 2*Math.PI);
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#c6d6fd";
+      ctx.fill();
+      ctx.stroke();
+
+      // 左边蓝色菱形
+      ctx.beginPath();
+      ctx.moveTo(115 * unit, 490 * unit);
+      ctx.lineTo(145 * unit, 460 * unit);
+      ctx.lineTo(175 * unit, 490 * unit);
+      ctx.lineTo(145 * unit, 520 * unit);
+      ctx.closePath();
+      ctx.fillStyle = "#3045e7";
+      ctx.strokeStyle = "#3045e7";
+      ctx.fill();
+      ctx.stroke();
+
+
+      //左边蓝色菱形
+      // ctx.translate( 30+.5*50, 200+.5*50);
+      // ctx.rotate(45*Math.PI/180);
+
+      // ctx.fillStyle = "#3045e7";
+      // ctx.fillRect(30, 200, 25, 25);
+
+      //右边黄色菱形
+      // ctx.rotate(5*Math.PI/180);
+      ctx.beginPath();
+
+      ctx.moveTo(695 * unit, 640 * unit);
+      ctx.lineTo(665 * unit, 670 * unit);
+      ctx.lineTo(695 * unit, 700 * unit);
+      ctx.lineTo(725 * unit, 670 * unit);
+      ctx.closePath();
+      ctx.fillStyle = "#fdb771";
+      ctx.strokeStyle = "#fdb771";
+      ctx.fill();
+      ctx.stroke();
+
+
+	  // 文字
+	  ctx.font="900 .3rem Arial";
+	  ctx.fillStyle	= "#ddfbff";
+	  ctx.fillText("Your True Financial",10 * unit , 800 * unit);
+	  ctx.fillText("Manager",10 * unit , 840 * unit);
+
+	  ctx.fillStyle	= "#b3e2fd";
+	  ctx.font = ".2rem Arial";
+	  ctx.fillText("Carrying out financial transactions and ",10 * unit , 890 * unit);
+	  ctx.fillText("get control of all your expenses",10 * unit , 920 * unit);
+
+
+      //下边小圆圈
+      ctx.beginPath();
+      ctx.arc( 560 * unit, realHeight - 184* unit, 60 * unit, 0, 2*Math.PI);
+      ctx.strokeStyle = "#134fc7";
+      ctx.stroke();
+
+      // 右下角圆形
+      ctx.beginPath();
+      ctx.arc(340 * unit, realHeight + 164 * unit , 400 * unit, 0, 2*Math.PI);
+      ctx.fillStyle = "#445ef9";
+      ctx.strokeStyle = "#445ef9";
+      ctx.fill();
+      ctx.stroke();
+
+      // 弯曲曲线
+      // ctx.beginPath();
+      // ctx.moveTo(60, 0);
+      // ctx.strokeStyle = "#76cafd";
+      // ctx.quadraticCurveTo(100,200,350,280);
+      // ctx.stroke();
+      //
+      // ctx.beginPath();
+      // ctx.moveTo(350,280);
+      // ctx.strokeStyle = "#76cafd";
+      // ctx.quadraticCurveTo(600,450,50,600);
+      // ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(120 * unit, 0);
+      ctx.strokeStyle = "#76cafd";
+      ctx.bezierCurveTo(60 * unit, 360 * unit, 1200 * unit, 400 * unit, 0, 760 * unit);
+      ctx.stroke();
+
+      // 三角形
+      ctx.beginPath();
+      ctx.lineJoin="round";
+      ctx.moveTo(500 * unit, 350 * unit);
+      ctx.lineTo(450 * unit, 420 * unit);
+      ctx.lineTo(550 * unit, 420 * unit);
+      ctx.closePath();
+      ctx.fillStyle = "#cbdffd";
+      ctx.strokeStyle = "#cbdffd";
+      ctx.fill();
+      ctx.stroke();
+    
+    }
+
+</script>
+</body>
+</html>

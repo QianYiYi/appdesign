@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, viewport-fit=cover">
+
+    <title>输入提示后查询</title>
+
+    <link rel="stylesheet" href="../css/financial.css"/>
+    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+	<style>
+
+
+	</style>
+
+</head>
+<body>
+  <section class="container-edge-distance">
+    <div class="tab-title">
+      <span class="back-icon"><</span>
+      <div class="text-center">
+            <div class="title-style">Statistics</div>
+            <div class="total-amount-text">
+              Total Amount
+            </div>
+            <div class="total-money">
+              $ 18,920
+            </div>
+      </div>
+
+      <div class="bar-grid">
+        <div class="bar-line"></div>
+        <div class="bar-line2"></div>
+      </div>
+    </div>
+    <div class="btn-part">
+      <button class="btn btn-blue" type="button" name="button">Income</button>
+      <button class="btn btn-expense" type="button" name="button">Expense</button>
+    </div>
+    <div class="btn-part2">
+      <button class="btn" type="button" name="button">Day</button>
+      <button class="btn btn-blue" type="button" name="button">Week</button>
+      <button class="btn" type="button" name="button">Month</button>
+      <button class="btn" type="button" name="button">Year</button>
+    </div>
+
+  </section>
+  <div id="main"></div>
+  <section class="container-edge-distance">
+    <div class="card-list">
+      <div class="card-contain">
+        <div>
+          <i class="fa fa-id-badge" aria-hidden="true"></i>
+        </div>
+
+        <div class="cash-text">
+          <div>Non-cash </div>
+          <div>Transfer</div>
+        </div>
+
+      </div>
+      <div class="card-contain">
+        <div>
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        </div>
+        <div class="cash-text">
+          <div>Bank1 </div>
+          <div>Transfer</div>
+        </div>
+      </div>
+      <div class="card-contain">
+        <div>
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        </div>
+        <div class="cash-text">
+          <div>Bank2 </div>
+          <div>Transfer</div>
+        </div>
+      </div>
+      <div class="card-contain">
+        <div>
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        </div>
+        <div class="cash-text">
+          <div>Bank3 </div>
+          <div>Transfer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+<script type="text/javascript" src="../js/echarts.min.js"></script>
+
+<script type="text/javascript">
+  var canvasId = document.getElementById('main');
+
+  canvasIdWidth = window.screen.width;
+  canvasId.style.width = canvasIdWidth  + "px";
+  canvasId.style.height = "8rem";
+
+  var myChart = echarts.init(canvasId);
+  var option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+              type: 'cross',
+              label: {
+                  backgroundColor: '#6a7985'
+              }
+          }
+      },
+      xAxis: {
+          axisLine:{
+            show: false
+          },
+          axisTick:{
+            show: false
+          },
+          nameTextStyle:{
+            color: "#e9686b"
+          },
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+          type: 'value',
+          show: false
+      },
+      grid: {
+        left: 0,
+        right: 0
+      },
+      series: [{
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          smooth: true,
+          type: 'line',
+          lineStyle:{
+            color: "#c1c2d4"
+          },
+          itemStyle:{
+            color: "#adafd8"
+          }
+
+      }]
+  };
+
+
+     myChart.setOption(option);
+</script>
