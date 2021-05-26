@@ -11,4 +11,4 @@
 
 ```
 
-![image](https://github.com/QianYiYi/appdesign/blob/main/img/attachment.jpg)
+![image](https://github.com/QianYiYi/appdesign/blob/main/img/attachment.png)
