@@ -12,3 +12,8 @@
 ```
 
 ![image](https://github.com/QianYiYi/appdesign/blob/main/img/attachment.png)
+
+## Finished design
+```
+ ![image](https://github.com/QianYiYi/appdesign/blob/main/img/attachment.png)   
+```
